@@ -6,5 +6,9 @@ public class Test {
     public static void main(String[] args) {
         TestPO testPO = new TestPO();
         testPO.test();
+        System.out.println("cao");
+        System.out.println("");
+        System.out.println("cao");
+        System.out.println("wo");
     }
 }
