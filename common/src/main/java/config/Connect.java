@@ -9,7 +9,7 @@ import java.util.Properties;
  *
  * 负责RMI连接配置,包括 IP地址和端口号
  */
-public class Connect {
+public final class Connect {
     public static final String IP;
     public static final String PORT;
 
