@@ -1,0 +1,12 @@
+DROP TABLE person;
+CREATE TABLE person(
+	id INT AUTO_INCREMENT PRIMARY KEY NOT NULL, 
+	name VARCHAR(50) NOT NULL, 
+	age INT NOT NULL, 
+	birthday DATE NOT NULL
+);
+
+INSERT INTO person(id, name, age, birthday)
+
+//查看数据表结构
+desc person;
