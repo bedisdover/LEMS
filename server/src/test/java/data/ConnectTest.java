@@ -1,5 +1,6 @@
 package data;
 
+import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,8 +8,12 @@ import static org.junit.Assert.*;
 
 /**
  * Created by 宋益明 on 16-1-23.
+ *
+ * 数据库连接测试类
+ *
+ * TODO 测试失败
  */
-public class ConnectTest {
+public class ConnectTest extends TestCase {
 
     private Connect connect;
 

@@ -18,7 +18,6 @@ public class BookPOTest extends TestCase {
     private BookPO book;
     private List<String> authors;
 
-
     public void setUp() throws Exception {
         authors = new ArrayList<String>();
         authors.add("丁二玉");
