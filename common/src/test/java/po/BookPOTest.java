@@ -1,12 +1,10 @@
 package po;
 
-import org.junit.Before;
-import org.junit.Test;
+import junit.framework.TestCase;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 
 /**
  * Created by 宋益明 on 16-1-23.
@@ -15,12 +13,12 @@ import static org.junit.Assert.*;
  * 测试getAuthor()方法
  * 测试成功
  */
-public class BookPOTest {
+public class BookPOTest extends TestCase {
 
     private BookPO book;
     private List<String> authors;
 
-    @Before
+
     public void setUp() throws Exception {
         authors = new ArrayList<String>();
         authors.add("丁二玉");
@@ -30,7 +28,6 @@ public class BookPOTest {
         book = new BookPO("软工二", authors, "", "", BookType.ORDINARY);
     }
 
-    @Test
     public void testGetAuthor() throws Exception {
         assertEquals(book.getAuthor(), authors);
     }
