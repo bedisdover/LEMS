@@ -1,0 +1,37 @@
+package po;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * Created by 宋益明 on 16-1-23.
+ *
+ * 图书持久化对象测试类
+ * 测试getAuthor()方法
+ * 测试成功
+ */
+public class BookPOTest {
+
+    private BookPO book;
+    private List<String> authors;
+
+    @Before
+    public void setUp() throws Exception {
+        authors = new ArrayList<String>();
+        authors.add("丁二玉");
+        authors.add("刘钦");
+
+        //TODO 不完整的图书信息
+        book = new BookPO("软工二", authors, "", "", BookType.ORDINARY);
+    }
+
+    @Test
+    public void testGetAuthor() throws Exception {
+        assertEquals(book.getAuthor(), authors);
+    }
+}

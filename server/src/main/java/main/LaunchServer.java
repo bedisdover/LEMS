@@ -1,6 +1,8 @@
 package main;
 
-import config.Connect;
+import data.Config;
+import data.DataBaseFactoryImpl;
+import dataservice.DataBaseFactory;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -18,9 +20,9 @@ public class LaunchServer {
 
     public static void main(String[] args) {
         try {
+            DataBaseFactory dataBase = new DataBaseFactoryImpl();
             LocateRegistry.createRegistry(PORT);
-            //TODO data
-            Naming.rebind("rmi://" + Connect.IP + ":" + Connect.PORT + "/data", null);
+            Naming.rebind("rmi://" + Config.IP + ":" + Config.PORT + "/data", dataBase);
 
             System.out.println("Ready......");
         } catch (RemoteException e) {
