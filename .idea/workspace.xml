@@ -1,121 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef8fa448-64fb-43af-b283-4ab49c9e95f1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/mysql-connector-java-5.1.38-bin.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/presentation/admin/AdminMenu.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/test/java/ConnectTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/test/java/data/DatabaseConnectTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/bl/Login.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/blservice/LoginBLservice.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/presentation/config/LoginConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/presentation/MenuPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/test/java/presentation/MenuPanelTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/presentation/util/Portrait.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/presentation/reader/ReaderMenu.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/test/java/utility/ResultMessageTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/data/user/TransferList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/data/user/TransferString.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/test/java/data/user/UserDataTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/test/java/po/UserPOTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/resources/connect.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/resources/login.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_38_bin.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_38_bin__2_.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_38_bin__3_.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_38_bin__4_.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/test.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/test.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/song.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Server.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/junit.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/lib/junit.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/postgresql-9.4-1205.jdbc42.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/main/resources/connect.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/test/java/data/ConfigTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/test/java/data/ConnectTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/blservice/BackBLservice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/blservice/BorrowBLservice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/blservice/ChargeBLservice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/blservice/ModifyBLservice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/blservice/NumberBLservice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/blservice/OrderBLservice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/blservice/RemindBLservice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/blservice/RenewBLservice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/blservice/SearchBLService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/blservice/SearchHistoryBLService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/blservice/StatisticBLservice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/data/BookData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/data/Config.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/data/Connect.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/data/DataBaseFactoryImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/data/UserData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dataservice/BookDataService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dataservice/DataBaseFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dataservice/UserDataService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/main/LaunchClient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/main/LaunchServer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/po/BookPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/po/BookType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/po/UserPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/po/UserRole.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/presentation/LoginPanel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/presentation/MainFrame.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/presentation/config/MainFrameConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/utility/Format.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/utility/ResultMessage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/data/BookDataTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/data/ConfigTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/data/ConnectTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/po/BookPOTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/presentation/config/MainFrameConfigTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/utility/FormatTest.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/blservice/BackBLservice.java" afterPath="$PROJECT_DIR$/client/src/main/java/blservice/reader/BackBLservice.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/blservice/BorrowBLservice.java" afterPath="$PROJECT_DIR$/client/src/main/java/blservice/reader/BorrowBLservice.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/blservice/ChargeBLservice.java" afterPath="$PROJECT_DIR$/client/src/main/java/blservice/admin/ChargeBLservice.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/blservice/ModifyBLservice.java" afterPath="$PROJECT_DIR$/client/src/main/java/blservice/admin/ModifyBLservice.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/blservice/NumberBLservice.java" afterPath="$PROJECT_DIR$/client/src/main/java/blservice/admin/NumberBLservice.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/blservice/OrderBLservice.java" afterPath="$PROJECT_DIR$/client/src/main/java/blservice/reader/OrderBLservice.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/blservice/RemindBLservice.java" afterPath="$PROJECT_DIR$/client/src/main/java/blservice/admin/RemindBLservice.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/blservice/RenewBLservice.java" afterPath="$PROJECT_DIR$/client/src/main/java/blservice/reader/RenewBLservice.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/blservice/SearchBLService.java" afterPath="$PROJECT_DIR$/client/src/main/java/blservice/reader/SearchBLService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/blservice/SearchHistoryBLService.java" afterPath="$PROJECT_DIR$/client/src/main/java/blservice/reader/SearchHistoryBLService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/blservice/StatisticBLservice.java" afterPath="$PROJECT_DIR$/client/src/main/java/blservice/admin/StatisticBLservice.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/data/BookData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/book/BookData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/data/Config.java" afterPath="$PROJECT_DIR$/common/src/main/java/utility/ConnectConfig.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/data/Connect.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/DatabaseConnect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/data/UserData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/user/UserData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/test/java/data/BookDataTest.java" afterPath="$PROJECT_DIR$/server/src/test/java/data/book/BookDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/utility/ResultMessage.class" afterPath="$PROJECT_DIR$/common/target/classes/utility/ResultMessage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/UserPO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/UserPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/test/java/po/BookPOTest.java" afterPath="$PROJECT_DIR$/common/src/test/java/po/BookPOTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/DataBaseFactoryImpl.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/DataBaseFactoryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LEMS.iml" afterPath="$PROJECT_DIR$/LEMS.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/main/LaunchClient.java" afterPath="$PROJECT_DIR$/client/src/main/java/main/LaunchClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/main/LaunchServer.java" afterPath="$PROJECT_DIR$/server/src/main/java/main/LaunchServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/presentation/LoginPanel.java" afterPath="$PROJECT_DIR$/client/src/main/java/presentation/LoginPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/presentation/MainFrame.java" afterPath="$PROJECT_DIR$/client/src/main/java/presentation/MainFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/test/java/presentation/config/MainFrameConfigTest.java" afterPath="$PROJECT_DIR$/client/src/test/java/presentation/config/MainFrameConfigTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/utility/ResultMessage.java" afterPath="$PROJECT_DIR$/common/src/main/java/utility/ResultMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/po/UserPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/UserPO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/client.iml" afterPath="$PROJECT_DIR$/client/client.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/common.iml" afterPath="$PROJECT_DIR$/common/common.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="ef8fa448-64fb-43af-b283-4ab49c9e95f1" name="Default" comment="" />
     <ignored path="LEMS.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -168,8 +54,8 @@
       <file leaf-file-name="test.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/src/test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.6196721">
+              <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -302,7 +188,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -313,72 +199,7 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LEMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LEMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LEMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LEMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LEMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LEMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LEMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LEMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
@@ -660,6 +481,13 @@
       <workItem from="1453817101725" duration="303000" />
       <workItem from="1455367621954" duration="20000" />
     </task>
+    <task id="LOCAL-00001" summary="上传">
+      <created>1456150460077</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1456150460077</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -676,10 +504,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1366" height="772" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32554516" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -699,7 +528,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39875388" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32554516" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32554516" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -742,6 +570,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="上传" />
+    <option name="LAST_COMMIT_MESSAGE" value="上传" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1073,6 +905,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.78032786">
           <caret line="1398" column="13" selection-start-line="1398" selection-start-column="13" selection-end-line="1398" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1101,13 +934,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13770492">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/src/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.6196721">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
