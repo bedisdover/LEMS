@@ -1,13 +1,13 @@
 package main;
 
-import data.Config;
 import data.DataBaseFactoryImpl;
 import dataservice.DataBaseFactory;
+import utility.ConnectConfig;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
+import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 /**
  * Created by 宋益明 on 16-1-20.
@@ -16,18 +16,17 @@ import java.rmi.registry.LocateRegistry;
  */
 public class LaunchServer {
 
-    private static final int PORT = 1099;
-
     public static void main(String[] args) {
         try {
             DataBaseFactory dataBase = new DataBaseFactoryImpl();
-            LocateRegistry.createRegistry(PORT);
-            Naming.rebind("rmi://" + Config.IP + ":" + Config.PORT + "/data", dataBase);
+            Registry registry = LocateRegistry.createRegistry(
+                                Integer.parseInt(ConnectConfig.PORT));
+            registry.bind("data", dataBase);
 
             System.out.println("Ready......");
         } catch (RemoteException e) {
             e.printStackTrace();
-        } catch (MalformedURLException e) {
+        } catch (AlreadyBoundException e) {
             e.printStackTrace();
         }
     }

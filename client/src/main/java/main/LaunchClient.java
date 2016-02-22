@@ -1,5 +1,6 @@
 package main;
 
+import presentation.LoginPanel;
 import presentation.MainFrame;
 
 import javax.swing.*;
@@ -14,6 +15,8 @@ public class LaunchClient {
 
     public static void main(String[] args) {
         JFrame mainFrame = MainFrame.getMainFrame();
+        mainFrame.setContentPane(LoginPanel.getLoginPanel());
+
         mainFrame.setVisible(true);
     }
 }

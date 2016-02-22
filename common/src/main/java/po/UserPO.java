@@ -1,8 +1,7 @@
 package po;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by 宋益明 on 16-1-23.
@@ -34,12 +33,12 @@ public class UserPO implements Serializable {
     private String password;
 
     /**
-     * 借阅列表 TODO 类型不见得合适
+     * 借阅列表
      */
-    private List<String> brorrowList;
+    private List<String> borrowList;
 
     /**
-     * 预约列表 TODO 类型不见得合适
+     * 预约列表
      */
     private List<String> renewList;
 
@@ -51,7 +50,7 @@ public class UserPO implements Serializable {
         //初始密码为用户ID
         this.password = ID;
 
-        brorrowList = new ArrayList<String>();
+        borrowList = new ArrayList<String>();
         renewList = new ArrayList<String>();
     }
 
@@ -59,12 +58,12 @@ public class UserPO implements Serializable {
         return name;
     }
 
-    public List<String> getBrorrowList() {
-        return brorrowList;
+    public Iterator<String> getBorrowList() {
+        return borrowList.iterator();
     }
 
-    public List<String> getRenewList() {
-        return renewList;
+    public Iterator<String> getRenewList() {
+        return renewList.iterator();
     }
 
     public String getID() {
@@ -79,12 +78,20 @@ public class UserPO implements Serializable {
         return role;
     }
 
-    public void setBrorrowList(BookPO book) {
-        this.brorrowList.add(book.getISBN());
+    public void setBorrowList(String book) {
+        StringTokenizer tokenizer = new StringTokenizer(book);
+
+        while (tokenizer.hasMoreTokens()) {
+            this.borrowList.add(0, tokenizer.nextToken());
+        }
     }
 
-    public void setRenewList(BookPO book) {
-        this.renewList.add(book.getISBN());
+    public void setRenewList(String book) {
+        StringTokenizer tokenizer = new StringTokenizer(book);
+
+        while (tokenizer.hasMoreTokens()) {
+            this.renewList.add(0, tokenizer.nextToken());
+        }
     }
 
     public void setPassword(String password) {

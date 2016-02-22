@@ -10,4 +10,12 @@ public enum ResultMessage {
     SUCCESS,//成功
     FAILURE,//失败
     ;
+
+    public ResultMessage union(ResultMessage result) {
+        if (this.equals(SUCCESS) && result.equals(SUCCESS)) {
+            return SUCCESS;
+        }
+
+        return FAILURE;
+    }
 }
