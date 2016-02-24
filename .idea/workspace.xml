@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef8fa448-64fb-43af-b283-4ab49c9e95f1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/MainFrame.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/MainFrame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/MenuPanel.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/MenuPanel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/util/Portrait$1.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/util/Portrait$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/util/Portrait$2.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/util/Portrait$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/util/Portrait$3.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/util/Portrait$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/util/Portrait.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/util/Portrait.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/portrait.png" afterPath="$PROJECT_DIR$/portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/presentation/MainFrame.java" afterPath="$PROJECT_DIR$/client/src/main/java/presentation/MainFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/presentation/MenuPanel.java" afterPath="$PROJECT_DIR$/client/src/main/java/presentation/MenuPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/presentation/util/Portrait.java" afterPath="$PROJECT_DIR$/client/src/main/java/presentation/util/Portrait.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/resources/login.xml" afterPath="$PROJECT_DIR$/client/src/main/resources/login.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/login.xml" afterPath="$PROJECT_DIR$/client/target/classes/login.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LEMS.iws" />
@@ -56,12 +54,10 @@
       <file leaf-file-name="Portrait.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/main/java/presentation/util/Portrait.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.552459">
-              <caret line="126" column="16" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.5868853">
+              <caret line="207" column="23" selection-start-line="207" selection-start-column="23" selection-end-line="207" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2197#3192#0" expanded="true" />
-                <element signature="e#3191#3192#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -180,9 +176,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1366" />
-    <option name="height" value="744" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -207,8 +203,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -230,6 +224,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -529,7 +525,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1366" height="744" extended-state="6" />
+    <frame x="0" y="-4" width="1366" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -539,7 +535,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32554516" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -612,18 +608,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/presentation/util/Portrait.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2197#3192#0" expanded="true" />
-            <element signature="e#3191#3192#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/local/jdk1.8.0_60/src.zip!/javax/swing/JTextField.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -761,13 +745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.57377046">
           <caret line="124" column="40" selection-start-line="124" selection-start-column="40" selection-end-line="124" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/local/jdk1.8.0_60/src.zip!/java/awt/Graphics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3327869">
-          <caret line="605" column="69" selection-start-line="605" selection-start-column="63" selection-end-line="605" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -921,7 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41311476">
           <caret line="62" column="19" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -929,10 +905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3327869">
           <caret line="479" column="16" selection-start-line="479" selection-start-column="16" selection-end-line="479" selection-end-column="16" />
-          <folding>
-            <element signature="e#15769#15770#0" expanded="false" />
-            <element signature="e#15804#15805#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -972,14 +944,28 @@
         <state />
       </provider>
     </entry>
+    <entry file="jar:///usr/local/jdk1.8.0_60/src.zip!/java/awt/Graphics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="32.739346">
+          <caret line="1044" column="14" selection-start-line="1044" selection-start-column="14" selection-end-line="1044" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/local/jdk1.8.0_60/src.zip!/java/awt/Graphics2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33275563">
+          <caret line="212" column="20" selection-start-line="212" selection-start-column="11" selection-end-line="212" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/main/java/presentation/util/Portrait.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.552459">
-          <caret line="126" column="16" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.5868853">
+          <caret line="207" column="23" selection-start-line="207" selection-start-column="23" selection-end-line="207" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2197#3192#0" expanded="true" />
-            <element signature="e#3191#3192#0" expanded="true" />
           </folding>
         </state>
       </provider>

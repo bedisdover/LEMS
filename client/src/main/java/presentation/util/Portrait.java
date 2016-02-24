@@ -132,8 +132,6 @@ public class Portrait extends JPanel {
                     x += 10;
                 }
 
-                radius = diameter / 2;
-
                 repaint();
             }
         });
@@ -169,7 +167,7 @@ public class Portrait extends JPanel {
         Graphics2D g = result.createGraphics();
         g.drawImage(image, 0, 0, width, height, null);
 
-        Ellipse2D round = new Ellipse2D.Double(x - radius, y - radius, diameter, diameter);
+        Ellipse2D round = new Ellipse2D.Double(x - diameter / 2, y - diameter / 2, diameter, diameter);
         Area clear = new Area(new Rectangle2D.Double(0, 0, width, height));
         clear.subtract(new Area(round));
 
@@ -207,8 +205,9 @@ public class Portrait extends JPanel {
     private BufferedImage getSegmentedImage() {
         BufferedImage result = new BufferedImage(diameter, diameter, BufferedImage.TYPE_INT_ARGB);
 
+        //TODO BUG 头像位置
         Graphics2D g = result.createGraphics();
-        g.drawImage(image, 0, 0, diameter, diameter, x - radius, y - radius, x + radius, y + radius, null);
+        g.drawImage(image, 0, 0, diameter, diameter, x - diameter / 2, y - diameter / 2, x + diameter, y + diameter, null);
 
         Rectangle2D rectangle = new Rectangle2D.Double(0, 0, diameter, diameter);
         Ellipse2D round = new Ellipse2D.Double(0, 0, diameter, diameter);

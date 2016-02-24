@@ -2,8 +2,8 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>登录配置</comment>
-<entry key="Remember">true</entry>
 <entry key="ID">1</entry>
+<entry key="Remember">true</entry>
 <entry key="Password">1</entry>
 <entry key="AutoLogin">false</entry>
 </properties>
