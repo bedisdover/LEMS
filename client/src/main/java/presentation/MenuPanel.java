@@ -7,29 +7,54 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 /**
  * Created by 宋益明 on 16-2-3.
- *
+ * <p>
  * 菜单面板
  * 包含头像和功能列表
  */
 public class MenuPanel extends JPanel {
-    private JPanel portraitPanel;
 
-    private Image portrait;
+    /**
+     * 头像直径
+     */
+    private static final int PORTRAIT_DIAMETER = 60;
+
+    /**
+     * 头像文件
+     */
+    private static final File PORTRARIT = new File("portrait.png");
+
+    /**
+     * 原始图片
+     */
+    private BufferedImage image;
+
+    /**
+     * 头像图片
+     */
+    private BufferedImage portraitImage;
+
+    /**
+     * 头像选择器
+     */
+    private Portrait portrait;
+
+    /**
+     * 记录是否已选择头像
+     */
+    private boolean selected;
 
     public MenuPanel() {
         this.setLayout(null);
 
         this.createUIComponents();
-    }
 
-    @Override
-    public void paintBorder(Graphics g) {
-        super.paintBorder(g);
-
+        loadPortrait();
     }
 
     @Override
@@ -44,51 +69,78 @@ public class MenuPanel extends JPanel {
         graphics2D.setColor(new Color(11, 8, 18));
         graphics2D.fillRect(0, 0, this.getWidth() / 4, this.getHeight() / 6);
         graphics2D.setColor(Color.gray);
-        graphics2D.fillOval(20, 10, 60, 60);
+        graphics2D.fillOval(20, 10, PORTRAIT_DIAMETER, PORTRAIT_DIAMETER);
 
-        if (portrait != null) {
-//            graphics2D.drawImage(portrait, 20, 10, 60, 60, null);
-            graphics2D.drawImage(Portrait.getInstance().getRenderedImage(portrait, 50), 0, 0, null);
-        }
+        graphics2D.drawImage(portraitImage, 20, 10, null);
     }
 
     private void createUIComponents() {
-        portraitPanel = new JPanel();
-
-        portraitPanel.setBounds(20, 10, 60, 60);
-
-        portraitPanel.addMouseListener(new MouseAdapter() {
+        addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-
-                try {
-                    //修改文件选择器风格
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                } catch (ClassNotFoundException e1) {
-                    e1.printStackTrace();
-                } catch (InstantiationException e1) {
-                    e1.printStackTrace();
-                } catch (IllegalAccessException e1) {
-                    e1.printStackTrace();
-                } catch (UnsupportedLookAndFeelException e1) {
-                    e1.printStackTrace();
-                }
-
-                JFileChooser chooser = new JFileChooser();
-                int result = chooser.showOpenDialog(MainFrame.getMainFrame());
-
-                if (result == JFileChooser.APPROVE_OPTION) {
-                    try {
-                        portrait = ImageIO.read(chooser.getSelectedFile());
-                        repaint();
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    }
+                if (e.getX() >= 20 && e.getX() <= 80 && e.getY() >= 10 && e.getY() <= 70) {
+                    chooseImage();
                 }
             }
         });
+    }
 
-        this.add(portraitPanel);
+    /**
+     * 选择原始图片
+     */
+    private void chooseImage() {
+        try {
+            //修改文件选择器风格
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+
+        JFileChooser chooser = new JFileChooser();
+        int result = chooser.showOpenDialog(MainFrame.getMainFrame());
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            try {
+                image = ImageIO.read(chooser.getSelectedFile());
+                portrait = new Portrait(this, image, PORTRAIT_DIAMETER);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 获得经头像选择器处理过的头像
+     */
+    public void getPortrait() {
+        portraitImage = portrait.getPortrait();
+        //存储更改后头像
+        storePortrait();
+        repaint();
+    }
+
+    /**
+     * 加载当前头像
+     */
+    private void loadPortrait() {
+        try {
+            portraitImage = ImageIO.read(PORTRARIT);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 存储更改后头像
+     */
+    private void storePortrait() {
+        try {
+            //删除原头像
+            PORTRARIT.delete();
+
+            ImageIO.write(portraitImage, "png", PORTRARIT);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

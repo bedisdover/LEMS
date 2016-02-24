@@ -3,14 +3,12 @@ package presentation;
 import bl.Login;
 import blservice.LoginBLservice;
 import presentation.config.LoginConfig;
-import presentation.reader.ReaderMenu;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.io.IOException;
 
 /**
@@ -125,7 +123,18 @@ public final class LoginPanel extends JPanel {
         }
     }
 
+    /**
+     * 添加事件监听器
+     */
     private void addListener() {
+        //默认"登录"按钮获取焦点
+        //程序运行时,LoginPanel层级发生变化
+        addHierarchyListener(new HierarchyListener() {
+            public void hierarchyChanged(HierarchyEvent e) {
+                btnOK.requestFocus();
+            }
+        });
+
         textID.getDocument().addDocumentListener(new DocumentListener() {
             public void insertUpdate(DocumentEvent e) {
                 idChanged();
@@ -141,32 +150,55 @@ public final class LoginPanel extends JPanel {
         btnOK.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                super.mouseReleased(e);
+                load();
+            }
+        });
 
-                if (remember.isSelected()) {
-                    try {
-                        config.store();
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    }
-                }
-
-                LoginBLservice service = new Login();
-
-                if (service.isLegal(textID.getText(), textPass.getPassword().toString())) {
-                    service.Login(textID.getText());
-                } else {
-                    JOptionPane.showMessageDialog(loginPanel, null, "密码错误", JOptionPane.ERROR_MESSAGE);
+        btnOK.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    load();
                 }
             }
         });
+
+        btnCancel.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // TODO 取消按钮效果
+            }
+        });
+
     }
 
     /**
-     * 用户名改变后,清空密码,记住密码选项设为空
+     * 用户名改变后,清空密码,记住密码选项设为空,自动登录选项设为空
      */
     private void idChanged() {
         textPass.setText("");
         remember.setSelected(false);
+        autoLogin.setSelected(false);
+    }
+
+    /**
+     * 登录操作
+     */
+    private void load() {
+        if (remember.isSelected()) {
+            try {
+                config.store();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        LoginBLservice service = new Login();
+
+        if (service.isLegal(textID.getText(), textPass.getPassword().toString())) {
+            service.Login(textID.getText());
+        } else {
+            JOptionPane.showMessageDialog(loginPanel, null, "密码错误", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
