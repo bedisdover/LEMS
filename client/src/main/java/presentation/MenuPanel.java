@@ -71,7 +71,7 @@ public class MenuPanel extends JPanel {
         graphics2D.setColor(Color.gray);
         graphics2D.fillOval(20, 10, PORTRAIT_DIAMETER, PORTRAIT_DIAMETER);
 
-        graphics2D.drawImage(portraitImage, 20, 10, null);
+        graphics2D.drawImage(portraitImage, 20, 10, PORTRAIT_DIAMETER, PORTRAIT_DIAMETER, null);
     }
 
     private void createUIComponents() {
@@ -102,7 +102,7 @@ public class MenuPanel extends JPanel {
         if (result == JFileChooser.APPROVE_OPTION) {
             try {
                 image = ImageIO.read(chooser.getSelectedFile());
-                portrait = new Portrait(this, image, PORTRAIT_DIAMETER);
+                portrait = new Portrait(this, image);
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -114,8 +114,14 @@ public class MenuPanel extends JPanel {
      */
     public void getPortrait() {
         portraitImage = portrait.getPortrait();
-        //存储更改后头像
-        storePortrait();
+
+        if (portraitImage != null) {
+            //存储更改后头像
+            storePortrait();
+        } else {
+            loadPortrait();
+        }
+
         repaint();
     }
 
@@ -126,7 +132,7 @@ public class MenuPanel extends JPanel {
         try {
             portraitImage = ImageIO.read(PORTRARIT);
         } catch (IOException e) {
-            e.printStackTrace();
+            portraitImage = null;
         }
     }
 

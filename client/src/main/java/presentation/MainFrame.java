@@ -19,7 +19,6 @@ public final class MainFrame extends JFrame {
 
     private MainFrame() {}
 
-
     static {
         screen = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -39,11 +38,8 @@ public final class MainFrame extends JFrame {
      * 初始化窗体
      */
     private static void init() {
-        frame.setBounds(
-                (int) (screen.getWidth() - width) / 2,
-                (int) (screen.getHeight() - height) / 2,
-                width, height
-        );
+        frame.setSize(width, height);
+        frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);

@@ -14,10 +14,12 @@ import java.awt.image.BufferedImage;
 /**
  * Created by 宋益明 on 16-2-22.
  * <p>
- * 头像处理类
+ * 头像选择器类
  * 实现将矩形图片转换为圆形图片(头像)
  */
 public class Portrait extends JPanel {
+
+    private static final int DEFAULT_DIAMETER = 100;
 
     /**
      * 头像以外部分的透明度
@@ -30,7 +32,7 @@ public class Portrait extends JPanel {
     private Image image;
 
     /**
-     * 图片宽度,高度
+     * 窗体宽度,高度
      */
     private int width, height;
 
@@ -49,23 +51,12 @@ public class Portrait extends JPanel {
      */
     private BufferedImage portrait;
 
-    private JDialog frame;
+    private JFrame frame;
     private MenuPanel menuPanel;
 
-    public Portrait(MenuPanel menuPanel, Image image, int diameter) {
-        this.image = image;
-        this.diameter = diameter;
+    public Portrait(MenuPanel menuPanel, Image image) {
         this.menuPanel = menuPanel;
-//        width = image.getWidth(null);
-//        height = image.getHeight(null);
-        //TODO 硬编码
-        width = 683;
-        height = 512;
-
-        radius = diameter / 2;
-
-        x = width / 2;
-        y = height / 2;
+        this.image = image;
 
         init();
         showTips();
@@ -77,28 +68,39 @@ public class Portrait extends JPanel {
      * 初始化
      */
     private void init() {
-        setPreferredSize(new Dimension(width, height));
+        width = MainFrame.getMainFrame().getWidth();
+        height = width * image.getHeight(this) / image.getWidth(this);
 
-//        Toolkit.getDefaultToolkit().addAWTEventListener(new AWTEventListener() {
-//            public void eventDispatched(AWTEvent event) {
-//                if (event.getID() == KeyEvent.KEY_PRESSED) {
-//                    if (((KeyEvent) event).getKeyCode() == KeyEvent.VK_ENTER) {
-//                        portrait = getSegmentedImage();
-//                        frame.dispose();
-//                    }
-//                }
-//            }
-//        }, AWTEvent.KEY_EVENT_MASK);
+        diameter = DEFAULT_DIAMETER;
+        radius = diameter / 2;
+
+        x = width / 2;
+        y = height / 2;
+
+        setLayout(null);
+        setPreferredSize(new Dimension(width, height));
+    }
+
+
+    /**
+     * 显示操作提示
+     */
+    private void showTips() {
+        JOptionPane.showMessageDialog(MainFrame.getMainFrame(), "点击回车确认图片\n点击Esc取消选择");
+        JOptionPane.showMessageDialog(MainFrame.getMainFrame(), "通过\"+\"及\"-\"调整头像大小");
+        JOptionPane.showMessageDialog(MainFrame.getMainFrame(), "通过\"↑、↓、←、→\"调节头像位置");
     }
 
     /**
      * 显示头像选择界面
      */
     private void showFrame() {
-        frame = new JDialog(MainFrame.getMainFrame());
+        frame = new JFrame();
         frame.setContentPane(this);
         frame.pack();
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
+
         frame.setVisible(true);
     }
 
@@ -109,12 +111,30 @@ public class Portrait extends JPanel {
         frame.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                int code = e.getKeyCode();
+
+                if (code == KeyEvent.VK_ENTER) {
                     portrait = getSegmentedImage();
                     frame.dispose();
-                } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                } else if (code == KeyEvent.VK_ESCAPE) {
                     frame.dispose();
+                } else if (code == KeyEvent.VK_EQUALS) {
+                    diameter += 10;
+                } else if (code == KeyEvent.VK_MINUS) {
+                    diameter -= 10;
+                } else if (code == KeyEvent.VK_UP) {
+                    y -= 10;
+                } else if (code == KeyEvent.VK_DOWN) {
+                    y += 10;
+                } else if (code == KeyEvent.VK_LEFT) {
+                    x -= 10;
+                } else if (code == KeyEvent.VK_RIGHT) {
+                    x += 10;
                 }
+
+                radius = diameter / 2;
+
+                repaint();
             }
         });
 
@@ -137,19 +157,6 @@ public class Portrait extends JPanel {
     }
 
     /**
-     * 显示操作提示
-     */
-    private void showTips() {
-        // TODO 消息提示框
-        JOptionPane.showMessageDialog(null, "点击回车确认图片");
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        g.drawImage(getRenderedImage(), 0, 0, null);
-    }
-
-    /**
      * 预处理源图片,调节切割范围之外图片的透明度,区分切割部分
      * 为方便观察,绘制等距离虚线
      *
@@ -160,8 +167,8 @@ public class Portrait extends JPanel {
                 width, height, BufferedImage.TYPE_INT_ARGB);
 
         Graphics2D g = result.createGraphics();
-
         g.drawImage(image, 0, 0, width, height, null);
+
         Ellipse2D round = new Ellipse2D.Double(x - radius, y - radius, diameter, diameter);
         Area clear = new Area(new Rectangle2D.Double(0, 0, width, height));
         clear.subtract(new Area(round));
@@ -217,6 +224,11 @@ public class Portrait extends JPanel {
         g.dispose();
 
         return result;
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.drawImage(getRenderedImage(), 0, 0, null);
     }
 
     public BufferedImage getPortrait() {
