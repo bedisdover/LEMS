@@ -64,7 +64,7 @@ public class MenuPanel extends JPanel {
         // 消除锯齿
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        graphics2D.setColor(new Color(153, 143, 66));
+        graphics2D.setColor(new Color(121, 106, 75));
         graphics2D.fillRect(0, 0, this.getWidth() / 4, this.getHeight());
         graphics2D.setColor(new Color(11, 8, 18));
         graphics2D.fillRect(0, 0, this.getWidth() / 4, this.getHeight() / 6);
@@ -143,7 +143,7 @@ public class MenuPanel extends JPanel {
         try {
             //删除原头像
             PORTRARIT.delete();
-
+            System.out.println(1);
             ImageIO.write(portraitImage, "png", PORTRARIT);
         } catch (IOException e) {
             e.printStackTrace();
