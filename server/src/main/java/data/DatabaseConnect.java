@@ -67,7 +67,9 @@ public final class DatabaseConnect {
 
     public static void main(String[] args) {
         try {
-            Class.forName("");
+            //TODO CLASSPATH
+            Class.forName(DB_DRIVER);
+            System.out.println("done");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

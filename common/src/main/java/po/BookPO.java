@@ -9,8 +9,11 @@ import java.util.StringTokenizer;
  * Created by 宋益明 on 16-1-23.
  * <p>
  * 图书持久化对象
- * 存储图书     基本信息(书名,作者,出版社,ISBN编号,图书类型)
- * 和     借阅信息(借阅者,预约者)
+ * 存储图书基本信息(书名,作者,出版社,ISBN编号,图书类型)
+ * 馆藏编号及借阅信息(借阅者,预约者)
+ *
+ * 同一本书有多个副本时,方便起见,以ISBN + 编号区分不同副本
+ * 搜索图书时,只考虑ISBN
  */
 public final class BookPO implements Serializable {
 
@@ -21,7 +24,6 @@ public final class BookPO implements Serializable {
 
     /**
      * 作者---可能有多个
-     * TODO 不知道数据库能否存StringTokenizer,待检验
      */
     private final StringTokenizer author;
 
@@ -39,6 +41,11 @@ public final class BookPO implements Serializable {
      * 图书类型
      */
     private final BookType type;
+
+    /**
+     * 馆藏编号
+     */
+    private String number;
 
     /**
      * 当前借阅用户
@@ -95,12 +102,20 @@ public final class BookPO implements Serializable {
         return type;
     }
 
+    public String getNumber() {
+        return number;
+    }
+
     public UserPO getBorrower() {
         return borrower;
     }
 
     public UserPO getRenewer() {
         return renewer;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public void setBorrower(UserPO borrower) {

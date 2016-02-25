@@ -34,7 +34,7 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
      * @throws RemoteException 远程连接异常
      */
     public ResultMessage insert(BookPO book) throws RemoteException {
-        String sql = "insert into Book values (?, ?, ?, ?)";
+        String sql = "insert into Book values (?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement pstm = databaseConnect.getPreparedStatement(sql);
@@ -43,6 +43,7 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
             pstm.setString(2, book.getName());
             pstm.setString(3, book.getAuthor().toString());
             pstm.setString(4, book.getPublisher());
+            pstm.setString(5, book.getNumber());
         } catch (SQLException e) {
             databaseConnect.closeConnection();
 

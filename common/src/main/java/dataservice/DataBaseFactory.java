@@ -17,4 +17,11 @@ public interface DataBaseFactory extends Remote {
      * @throws RemoteException 远程连接异常
      */
     public BookDataService getBookDataService() throws RemoteException;
+
+    /**
+     * 获得用户数据接口
+     * @return
+     * @throws RemoteException 远程连接异常
+     */
+    public UserDataService getUserDataService() throws RemoteException;
 }

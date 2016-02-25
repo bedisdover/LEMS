@@ -205,7 +205,7 @@ public class Portrait extends JPanel {
     private BufferedImage getSegmentedImage() {
         BufferedImage result = new BufferedImage(diameter, diameter, BufferedImage.TYPE_INT_ARGB);
 
-        //TODO BUG 头像位置
+        //TODO BUG 头像位置偏左上
         Graphics2D g = result.createGraphics();
         g.drawImage(image, 0, 0, diameter, diameter, x - diameter / 2, y - diameter / 2, x + diameter, y + diameter, null);
 
