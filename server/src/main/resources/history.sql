@@ -14,6 +14,9 @@
     --创建数据库
     create database db_test;
 
+    --设置编码格式
+    create database db_name character set utf8;
+
     --使用数据库
     use db_test;
 
@@ -47,7 +50,7 @@
 
 
     --添加Field
-    alter table person add salary double not null;
+    alter table person add salary double character set utf8 collate utf8_unicode_ci not null;
 
     --删除Field
     alter table person drop salary;

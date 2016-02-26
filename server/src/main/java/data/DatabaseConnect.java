@@ -32,8 +32,8 @@ public final class DatabaseConnect {
     }
 
     public ResultSet getResultSet(String sql) throws SQLException {
-        this.getPreparedStatement(sql);
-        result = pstmt.getResultSet();
+        pstmt = getPreparedStatement(sql);
+        result = pstmt.executeQuery();
 
         return result;
     }
@@ -58,17 +58,6 @@ public final class DatabaseConnect {
         try {
             Class.forName(DB_DRIVER);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) {
-        String sql = "select * from book;";
-
-        try {
-            new DatabaseConnect().getPreparedStatement(sql);
-            System.out.println("done");
-        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

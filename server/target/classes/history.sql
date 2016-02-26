@@ -14,6 +14,9 @@
     --创建数据库
     create database db_test;
 
+    --设置编码格式
+    create database db_name character set utf8;
+
     --使用数据库
     use db_test;
 

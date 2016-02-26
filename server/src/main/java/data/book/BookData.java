@@ -41,18 +41,18 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
         String sql = "insert into book values (?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement pstm = databaseConnect.getPreparedStatement(sql);
+            PreparedStatement pstmt = databaseConnect.getPreparedStatement(sql);
 
-            pstm.setString(1, book.getISBN());
-            pstm.setString(2, book.getName());
-            pstm.setString(3, book.getAuthor().toString());
-            pstm.setString(4, book.getPublisher());
-            pstm.setString(5, book.getType().toString());
+            pstmt.setString(1, book.getISBN());
+            pstmt.setString(2, book.getName());
+            pstmt.setString(3, book.getAuthor().toString());
+            pstmt.setString(4, book.getPublisher());
+            pstmt.setString(5, book.getType().toString());
             //TODO 添加借阅者和预约人
-            pstm.setString(6, "");
-            pstm.setString(7, "");
+            pstmt.setString(6, "");
+            pstmt.setString(7, "");
 
-            pstm.executeUpdate();
+            pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
             databaseConnect.closeConnection();
@@ -121,23 +121,23 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
     }
 
     public static void main(String[] args) {
-//        List<String> authors = new ArrayList<String>();
-//        authors.add("丁二玉");
-//        authors.add("刘钦");
-//
-//        BookPO book = new BookPO("软工二", authors, "机械工业出版社", "9787111407508", BookType.ORDINARY);
-//
-//        try {
-//            ResultMessage r = new BookData().insert(book);
-//            System.out.println(r);
-//            System.out.println("done");
-//        } catch (RemoteException e) {
-//            e.printStackTrace();
-//        }
+        List<String> authors = new ArrayList<String>();
+        authors.add("丁二玉");
+        authors.add("刘钦");
+
+        BookPO book = new BookPO("软件工程与计算(卷二)", authors, "机械工业出版社", "9787111407508", BookType.ORDINARY);
+
         try {
-            new BookData().find("1");
+            ResultMessage r = new BookData().insert(book);
+            System.out.println(r);
+            System.out.println("done");
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+//        try {
+//            new BookData().find("9787111407508");
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
     }
 }
