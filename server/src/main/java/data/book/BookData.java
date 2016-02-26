@@ -3,12 +3,16 @@ package data.book;
 import data.DatabaseConnect;
 import dataservice.BookDataService;
 import po.BookPO;
+import po.BookType;
 import utility.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 宋益明 on 16-1-23.
@@ -34,7 +38,7 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
      * @throws RemoteException 远程连接异常
      */
     public ResultMessage insert(BookPO book) throws RemoteException {
-        String sql = "insert into Book values (?, ?, ?, ?, ?)";
+        String sql = "insert into book values (?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement pstm = databaseConnect.getPreparedStatement(sql);
@@ -43,8 +47,14 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
             pstm.setString(2, book.getName());
             pstm.setString(3, book.getAuthor().toString());
             pstm.setString(4, book.getPublisher());
-            pstm.setString(5, book.getNumber());
+            pstm.setString(5, book.getType().toString());
+            //TODO 添加借阅者和预约人
+            pstm.setString(6, "");
+            pstm.setString(7, "");
+
+            pstm.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             databaseConnect.closeConnection();
 
             return ResultMessage.FAILURE;
@@ -85,6 +95,17 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
      * @throws RemoteException 远程连接异常
      */
     public BookPO find(String ISBN) throws RemoteException {
+        String sql = "select * from book where ISBN = " + ISBN;
+
+        try {
+            ResultSet result = databaseConnect.getResultSet(sql);
+            result.next();
+
+            System.out.println(result.getString(2));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 
@@ -97,5 +118,26 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
      */
     public BookPO find(String... key) throws RemoteException {
         return null;
+    }
+
+    public static void main(String[] args) {
+//        List<String> authors = new ArrayList<String>();
+//        authors.add("丁二玉");
+//        authors.add("刘钦");
+//
+//        BookPO book = new BookPO("软工二", authors, "机械工业出版社", "9787111407508", BookType.ORDINARY);
+//
+//        try {
+//            ResultMessage r = new BookData().insert(book);
+//            System.out.println(r);
+//            System.out.println("done");
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
+        try {
+            new BookData().find("1");
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

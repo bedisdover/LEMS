@@ -9,45 +9,31 @@ import java.sql.*;
  * <p>
  * 数据库连接类
  * 负责与数据库的交互
- *
+ * <p>
  * TODO 未完成
  */
 public final class DatabaseConnect {
-//        public static final String DB_DRIVER = "org.gjt.mm.mysql.Driver";
     public static final String DB_DRIVER = "com.mysql.jdbc.Driver";
     public static final String DB_URL = "jdbc:mysql://" + ConnectConfig.IP + ":" + 3306 + "/LEMS";
     public static final String DB_USER = "root";
     public static final String DB_PASS = "123456";
 
     private Connection connection;
-    private PreparedStatement pstm;
+    private PreparedStatement pstmt;
     private ResultSet result;
 
-    private Statement stmt;
-
     public PreparedStatement getPreparedStatement(String sql) throws SQLException {
-        try {
-            Class.forName(DB_DRIVER).newInstance();
-//            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/test?" +
-                    "user=root&password=123456");
+        loadDriver();
+        connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
 
-        stmt = connection.createStatement();
-        pstm = connection.prepareStatement(sql);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        pstmt = connection.prepareStatement(sql);
 
-        return pstm;
+        return pstmt;
     }
 
     public ResultSet getResultSet(String sql) throws SQLException {
         this.getPreparedStatement(sql);
-        result = pstm.getResultSet();
+        result = pstmt.getResultSet();
 
         return result;
     }
@@ -58,19 +44,31 @@ public final class DatabaseConnect {
                 result.close();
             }
 
-            pstm.close();
+            pstmt.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) {
+    /**
+     * 加载驱动程序
+     */
+    private void loadDriver() {
         try {
-            //TODO CLASSPATH
             Class.forName(DB_DRIVER);
-            System.out.println("done");
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        String sql = "select * from book;";
+
+        try {
+            new DatabaseConnect().getPreparedStatement(sql);
+            System.out.println("done");
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

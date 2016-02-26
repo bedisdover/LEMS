@@ -143,7 +143,7 @@ public class MenuPanel extends JPanel {
         try {
             //删除原头像
             PORTRARIT.delete();
-            System.out.println(1);
+
             ImageIO.write(portraitImage, "png", PORTRARIT);
         } catch (IOException e) {
             e.printStackTrace();
