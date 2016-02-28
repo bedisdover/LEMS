@@ -1,8 +1,6 @@
 package data.user;
 
-import data.user.UserData;
 import junit.framework.TestCase;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import po.UserPO;
 import po.UserRole;

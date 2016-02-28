@@ -27,7 +27,7 @@ public class BookDataTest {
         authors.add("丁二玉");
         authors.add("刘钦");
 
-        book = new BookPO("软工二", authors, "机械工业出版社", "9787111407508", BookType.ORDINARY);
+        book = new BookPO("软工二", authors, "机械工业出版社", "9787111407508", BookType.ORDINARY, "");
 
         data = new BookData();
     }

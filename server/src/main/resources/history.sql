@@ -62,6 +62,8 @@
     describe person;
     --或简写为
     desc person;
+    --或
+    show full columns from person;
 
     --重命名表
     alter table person rename to temp;
@@ -79,8 +81,11 @@
     delete from person;
 
     --查询信息
-    select * from
-
+    select * from person where id = 1;
+    --查询全部
+    select * from person;
+    --模糊查找
+    select * from person where id like %1%;
 
     --删除表
     drop table person;

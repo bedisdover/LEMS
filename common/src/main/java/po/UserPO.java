@@ -9,8 +9,12 @@ import java.util.*;
  * 用户持久化对象
  * 包括   基本信息(ID, 姓名, 身份, 密码)
  * 以及   借阅信息(借阅列表, 预约列表)
+ *
+ * 用户初始密码为123456
  */
 public class UserPO implements Serializable {
+
+    private static final String DEFAULT_PASS = "123456";
 
     /**
      * 用户ID
@@ -47,8 +51,7 @@ public class UserPO implements Serializable {
         this.ID = ID;
         this.role = role;
 
-        //初始密码为用户ID
-        this.password = ID;
+        this.password = DEFAULT_PASS;
 
         borrowList = new ArrayList<String>();
         renewList = new ArrayList<String>();
