@@ -88,11 +88,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
      * @throws RemoteException 远程连接异常
      */
     public ResultMessage borrow(String userID, String barCode) throws RemoteException {
-        // 在原有记录前添加新的记录
-        String sql_concat = "select concat(?, borrowlist) from user where id = ?";
-        String borrowList = concat(sql_concat, userID, barCode);
-        //更新记录
-        return update("borrowlist", userID, borrowList);
+        return addBook("borrowlist", userID, barCode);
     }
 
     /**
@@ -104,11 +100,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
      * @throws RemoteException 远程连接异常
      */
     public ResultMessage renew(String userID, String barCode) throws RemoteException {
-        // 在原有记录前添加新的记录
-        String sql_concat = "select concat(?, renewlist) from user where id = ?";
-        String renewList = concat(sql_concat, userID, barCode);
-        //更新记录
-        return update("renewlist", userID, renewList);
+        return addBook("renewlist", userID, barCode);
     }
 
     /**
@@ -120,16 +112,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
      * @throws RemoteException 远程连接异常
      */
     public ResultMessage back(String userID, String barCode) throws RemoteException {
-        StringBuffer borrowList = new StringBuffer(getData("borrowlist", userID));
-
-        int start = borrowList.indexOf(barCode);
-        int end = start;
-
-        while (borrowList.charAt(end++) != ' ');
-
-        borrowList.delete(start, end);
-
-        return update("borrowlist", userID, borrowList.toString());
+        return deleteBook("borrowlist", userID, barCode);
     }
 
     /**
@@ -141,16 +124,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
      * @throws RemoteException 远程连接异常
      */
     public ResultMessage cancelRenew(String userID, String barCode) throws RemoteException {
-        StringBuffer renewList = new StringBuffer(getData("renewlist", userID));
-
-        int start = renewList.indexOf(barCode);
-        int end = start;
-
-        while (renewList.charAt(end++) != ' ');
-
-        renewList.delete(start, end);
-
-        return update("renewlist", userID, renewList.toString());
+        return deleteBook("renewlist", userID, barCode);
     }
 
     /**
@@ -190,9 +164,47 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
     }
 
     /**
+     * 向借阅列表或预约列表中添加图书
+     *
+     * @param field   表项
+     * @param userID  用户ID
+     * @param barCode 条形码
+     * @return 成功返回SUCCESS, 失败返回FAILURE
+     */
+    private ResultMessage addBook(String field, String userID, String barCode) {
+        // 获得原有记录
+        String list = getData(field, userID);
+        //添加新的记录
+        list = barCode + " " + list;
+        //更新记录
+        return update(list, userID, list);
+    }
+
+    /**
+     * 从借阅列表或预约列表中删除图书
+     *
+     * @param field   表项
+     * @param userID  用户ID
+     * @param barCode 条形码
+     * @return 成功返回SUCCESS, 失败返回FAILURE
+     */
+    private ResultMessage deleteBook(String field, String userID, String barCode) {
+        StringBuffer list = new StringBuffer(getData(field, userID));
+
+        int start = list.indexOf(barCode);
+        int end = start;
+
+        while (list.charAt(end++) != ' ') ;
+
+        list.delete(start, end);
+
+        return update(field, userID, list.toString());
+    }
+
+    /**
      * 更新数据
      *
-     * @param field 表项
+     * @param field   表项
      * @param userID  用户ID
      * @param content 更新内容
      * @return 结果信息
@@ -218,36 +230,9 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
     }
 
     /**
-     * 在用户现有记录(借阅, 预约)前添加新的记录
-     * 不同记录之间以空格分隔
-     *
-     * @param sql     sql语句
-     * @param userID  用户ID
-     * @param barCode 待添加条形码
-     * @return 添加后的记录
-     * TODO
-     */
-    private String concat(String sql, String userID, String barCode) {
-        String list = "";
-        try {
-            PreparedStatement pstmt = databaseConnect.getPreparedStatement(sql);
-            pstmt.setString(1, barCode + " ");
-            pstmt.setString(2, userID);
-
-            ResultSet result = pstmt.executeQuery();
-            result.next();
-            list = result.getString(1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return list;
-    }
-
-    /**
      * 获得数据库中指定ID的某一项数据
      *
-     * @param field 表项
+     * @param field  表项
      * @param userID 用户ID
      * @return 对应内容
      */
@@ -268,19 +253,5 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
 
         databaseConnect.closeConnection();
         return data;
-    }
-
-    public static void main(String[] args) throws RemoteException {
-        UserPO user = new UserPO("张三", "131110032", UserRole.UNDERGRADUATE);
-
-        UserData userData = new UserData();
-//        userData.insert(user);
-        userData.back(user.getID(), "2016012300002");
-//
-//        userData.cancelRenew(user.getID(), "2016012300002");
-
-
-        System.out.println("done");
-        System.exit(0);
     }
 }
