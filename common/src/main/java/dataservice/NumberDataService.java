@@ -2,6 +2,8 @@ package dataservice;
 
 import po.Category;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -13,7 +15,26 @@ import java.util.Date;
  * 书标在同类型图书编号基础上增加
  */
 public interface NumberDataService {
-    public String createBarCode(Date date);
 
+    /**
+     * 生成条形码, 默认当前日期
+     * @return 条形码
+     * @throws RemoteException 远程连接异常
+     */
+    public String createBarCode() throws RemoteException;
+
+    /**
+     * 生成条形码(日期+5位数编号)
+     * @param date 日期
+     * @return 条形码
+     * @throws RemoteException 远程连接异常
+     */
+    public String createBarCode(Date date) throws RemoteException;
+
+    /**
+     * 生成书标
+     * @param category 图书分类
+     * @return 书标
+     */
     public String createLabel(Category category);
 }

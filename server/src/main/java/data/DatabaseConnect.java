@@ -22,20 +22,24 @@ public final class DatabaseConnect {
     private PreparedStatement pstmt;
     private ResultSet result;
 
-    public PreparedStatement getPreparedStatement(String sql) throws SQLException {
-        loadDriver();
-        connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+    public PreparedStatement getPreparedStatement(String sql, String... values) throws SQLException {
+        loadDriver(sql);
 
-        pstmt = connection.prepareStatement(sql);
+        for (int i = 0; i < values.length; i++) {
+            pstmt.setString(i + 1, values[i]);
+        }
 
         return pstmt;
     }
 
-    public ResultSet getResultSet(String sql) throws SQLException {
+    public ResultSet getResultSet(String sql, String... values) throws SQLException {
         pstmt = getPreparedStatement(sql);
-        result = pstmt.executeQuery();
 
-        return result;
+        for (int i = 0; i < values.length; i++) {
+            pstmt.setString(i + 1, values[i]);
+        }
+
+        return pstmt.executeQuery();
     }
 
     public void closeConnection() {
@@ -53,11 +57,18 @@ public final class DatabaseConnect {
 
     /**
      * 加载驱动程序
+     *
+     * @param sql sql语句
      */
-    private void loadDriver() {
+    private void loadDriver(String sql) {
         try {
             Class.forName(DB_DRIVER);
+
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            pstmt = connection.prepareStatement(sql);
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

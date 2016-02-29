@@ -1,8 +1,10 @@
 package data;
 
 import data.book.BookData;
+import data.user.UserData;
 import dataservice.BookDataService;
 import dataservice.DataBaseFactory;
+import dataservice.NumberDataService;
 import dataservice.UserDataService;
 
 import java.rmi.RemoteException;
@@ -35,6 +37,16 @@ public class DataBaseFactoryImpl extends UnicastRemoteObject implements DataBase
      * @throws RemoteException 远程连接异常
      */
     public UserDataService getUserDataService() throws RemoteException {
-        return null;
+        return new UserData();
+    }
+
+    /**
+     * 获得图书编号数据服务
+     *
+     * @return
+     * @throws RemoteException 远程连接异常
+     */
+    public NumberDataService getNumberDataService() throws RemoteException {
+        return new NumberData();
     }
 }

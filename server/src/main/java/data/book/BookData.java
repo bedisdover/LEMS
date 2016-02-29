@@ -69,15 +69,17 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
     /**
      * 删除图书信息
      *
-     * @param barCode 图书ISBN编号
+     * @param barCode 图书条形码
      * @return 成功返回SUCCESS, 失败返回FAILURE
      * @throws RemoteException 远程连接异常
      */
     public ResultMessage delete(String barCode) throws RemoteException {
-        String sql = "delete from book where ISBN = " + barCode;
+        String sql = "delete from book where barcode = ?";
 
         try {
             PreparedStatement pstmt = databaseConnect.getPreparedStatement(sql);
+            pstmt.setString(1, barCode);
+
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -208,7 +210,7 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
 //        for (BookPO temp : list) {
 //            System.out.println(temp.getISBN());
 //        }
-//        new BookData().delete("9787111407508");
+        new BookData().delete("2016012300002");
 //        new BookData().update(book);
 //        new BookData().borrow("2016012300001", "2");
         new BookData().renew("2016012300002", "4");
