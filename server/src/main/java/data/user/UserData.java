@@ -38,7 +38,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
         String sql = "insert into user values(?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement pstmt = databaseConnect.getPreparedStatement(sql);
+            PreparedStatement pstmt = databaseConnect.execute(sql);
 
             pstmt.setString(1, user.getID());
             pstmt.setString(2, user.getName());
@@ -67,7 +67,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
     public ResultMessage delete(String ID) throws RemoteException {
         String sql = "delete from user where id = " + ID;
         try {
-            PreparedStatement pstmt = databaseConnect.getPreparedStatement(sql);
+            PreparedStatement pstmt = databaseConnect.execute(sql);
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -213,7 +213,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
         String sql = "update user set " + field + " = ? where id = ?";
 
         try {
-            PreparedStatement pstmt = databaseConnect.getPreparedStatement(sql);
+            PreparedStatement pstmt = databaseConnect.execute(sql);
 
             pstmt.setString(1, content);
             pstmt.setString(2, userID);
@@ -240,7 +240,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
         String data = "";
         String sql = "select " + field + " from user where id = ?";
         try {
-            PreparedStatement pstmt = databaseConnect.getPreparedStatement(sql);
+            PreparedStatement pstmt = databaseConnect.execute(sql);
 
             pstmt.setString(1, userID);
 

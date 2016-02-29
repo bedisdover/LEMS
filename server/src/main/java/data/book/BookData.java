@@ -44,19 +44,13 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
         String sql = "insert into book values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement pstmt = databaseConnect.getPreparedStatement(sql);
+            String[] values = new String[]{
+                    book.getName(), book.getAuthor(), book.getPublisher(),
+                    book.getISBN(), book.getType().toString(), book.getBarCode(),
+                    book.getLabel(), book.getBorrower(), book.getRenewer()
+            };
 
-            pstmt.setString(1, book.getName());
-            pstmt.setString(2, book.getAuthor());
-            pstmt.setString(3, book.getPublisher());
-            pstmt.setString(4, book.getISBN());
-            pstmt.setString(5, book.getType().toString());
-            pstmt.setString(6, book.getBarCode());
-            pstmt.setString(7, book.getLabel());
-            pstmt.setString(8, book.getBorrower());
-            pstmt.setString(9, book.getRenewer());
-
-            pstmt.executeUpdate();
+            databaseConnect.execute(sql, values);
         } catch (SQLException e) {
             databaseConnect.closeConnection();
             return ResultMessage.FAILURE;
@@ -77,10 +71,7 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
         String sql = "delete from book where barcode = ?";
 
         try {
-            PreparedStatement pstmt = databaseConnect.getPreparedStatement(sql);
-            pstmt.setString(1, barCode);
-
-            pstmt.executeUpdate();
+            databaseConnect.execute(sql, barCode);
         } catch (SQLException e) {
             e.printStackTrace();
             databaseConnect.closeConnection();
@@ -102,7 +93,7 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
     public ResultMessage borrow(String barCode, String userID) throws RemoteException {
         String sql = "update book set borrower = ? where barcode = ?";
 
-        return update(sql, userID, barCode);
+        return update(sql, barCode, userID);
     }
 
     /**
@@ -129,11 +120,11 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
      * @throws RemoteException 远程连接异常
      */
     public List<BookPO> find(String ISBN) throws RemoteException {
-        String sql = "select * from book where ISBN = " + ISBN + "";
+        String sql = "select * from book where ISBN = ?";
         List<BookPO> list = new ArrayList<BookPO>();
 
         try {
-            ResultSet result = databaseConnect.getResultSet(sql);
+            ResultSet result = databaseConnect.getResultSet(sql, ISBN);
             while (result.next()) {
                 String name = result.getString(1);
                 String author = result.getString(2);
@@ -143,6 +134,7 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
                 String label = result.getString(7);
                 String borrower = result.getString(8);
                 String renewer = result.getString(9);
+
                 BookPO book = new BookPO(name, author, publisher, ISBN, BookType.valueOf(type), label);
                 book.setBarCode(barCode);
                 book.setBorrower(borrower);
@@ -173,18 +165,16 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
     /**
      * 更新数据
      *
-     * @param sql     sql语句
-     * @param item    项目
-     * @param current 当前值
+     * @param sql   sql语句
+     * @param item  项目
+     * @param value 更新后的值
      * @return 结果信息
      */
-    private ResultMessage update(String sql, String item, String current) {
+    private ResultMessage update(String sql, String item, String value) {
         try {
-            PreparedStatement pstmt = databaseConnect.getPreparedStatement(sql);
-            pstmt.setString(1, current);
-            pstmt.setString(2, item);
-
-            pstmt.executeUpdate();
+            //更新语句均为 "update book set renewer = ?(<value>) where barcode = ?(<item>)"
+            //故传入参数顺序为value, item
+            databaseConnect.execute(sql, value, item);
         } catch (SQLException e) {
             e.printStackTrace();
             databaseConnect.closeConnection();
@@ -201,19 +191,19 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
         authors.add("刘钦");
 
         BookPO book = new BookPO("软件工程与计算(卷二)", authors, "机械工业出版社", "9787111407508", BookType.ORDINARY, "TP123:123");
-//        book.setBarCode("2016012300001");
+        book.setBarCode("2016012300002");
 //        book.setBorrower(new UserPO("teacher", "1", UserRole.TEACHER));
 //        book.setRenewer(new UserPO("student", "2", UserRole.UNDERGRADUATE));
 
 //        new BookData().insert(book);
-//        List<BookPO> list = new BookData().find("9787111407508-1");
+//        List<BookPO> list = new BookData().find("9787111407508");
 //        for (BookPO temp : list) {
 //            System.out.println(temp.getISBN());
 //        }
-        new BookData().delete("2016012300002");
+//        new BookData().delete("2016012300002");
 //        new BookData().update(book);
-//        new BookData().borrow("2016012300001", "2");
-        new BookData().renew("2016012300002", "4");
+        new BookData().borrow("2016012300001", "131110032");
+//        new BookData().renew("2016012300002", "131110034");
         System.out.println("done");
         System.exit(0);
     }

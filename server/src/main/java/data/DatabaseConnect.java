@@ -9,8 +9,6 @@ import java.sql.*;
  * <p>
  * 数据库连接类
  * 负责与数据库的交互
- * <p>
- * TODO 未完成
  */
 public final class DatabaseConnect {
     public static final String DB_DRIVER = "com.mysql.jdbc.Driver";
@@ -20,34 +18,22 @@ public final class DatabaseConnect {
 
     private Connection connection;
     private PreparedStatement pstmt;
-    private ResultSet result;
 
-    public PreparedStatement getPreparedStatement(String sql, String... values) throws SQLException {
-        loadDriver(sql);
+    public PreparedStatement execute(String sql, String... values) throws SQLException {
+        loadPreparedStatement(sql, values);
 
-        for (int i = 0; i < values.length; i++) {
-            pstmt.setString(i + 1, values[i]);
-        }
-
+        pstmt.executeUpdate();
         return pstmt;
     }
 
     public ResultSet getResultSet(String sql, String... values) throws SQLException {
-        pstmt = getPreparedStatement(sql);
-
-        for (int i = 0; i < values.length; i++) {
-            pstmt.setString(i + 1, values[i]);
-        }
+        loadPreparedStatement(sql, values);
 
         return pstmt.executeQuery();
     }
 
     public void closeConnection() {
         try {
-            if (result != null) {
-                result.close();
-            }
-
             pstmt.close();
             connection.close();
         } catch (SQLException e) {
@@ -60,15 +46,17 @@ public final class DatabaseConnect {
      *
      * @param sql sql语句
      */
-    private void loadDriver(String sql) {
+    private void loadPreparedStatement(String sql, String... values) throws SQLException {
         try {
             Class.forName(DB_DRIVER);
 
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
             pstmt = connection.prepareStatement(sql);
+
+            for (int i = 0; i < values.length; i++) {
+                pstmt.setString(i + 1, values[i]);
+            }
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

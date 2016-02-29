@@ -34,9 +34,9 @@ public class DatabaseConnectTest extends TestCase {
 
     @Test
     public void testGetPreparedStatement() throws Exception {
-        assertNotNull(databaseConnect.getPreparedStatement(sql));
-        assertNotNull(databaseConnect.getPreparedStatement(sql2));
-        assertNull(databaseConnect.getPreparedStatement(sql3));
+        assertNotNull(databaseConnect.execute(sql));
+        assertNotNull(databaseConnect.execute(sql2));
+        assertNull(databaseConnect.execute(sql3));
     }
 
     @Test
