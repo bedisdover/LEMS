@@ -5,6 +5,7 @@ import blservice.admin.NumberBLservice;
 import dataservice.BookDataService;
 import dataservice.NumberDataService;
 import po.BookPO;
+import po.BookType;
 import po.Category;
 
 import java.rmi.RemoteException;
@@ -18,7 +19,7 @@ import java.util.*;
  */
 public class Number implements NumberBLservice {
 
-    public Iterator<Map.Entry<String, String>> numberBook(BookPO book, Category category) throws RemoteException {
+    public Map<String, String> numberBook(BookPO book, Category category) throws RemoteException {
         String barCode = createBarCode();
         String label = createLabel(category);
 
@@ -30,9 +31,8 @@ public class Number implements NumberBLservice {
         Map<String, String> result = new HashMap<String, String>(2);
         result.put("barCode", barCode);
         result.put("label", label);
-        Set<Map.Entry<String, String>> set = result.entrySet();
 
-        return set.iterator();
+        return result;
     }
 
     /**
@@ -64,5 +64,18 @@ public class Number implements NumberBLservice {
     private void storeBookInfo(BookPO book) throws RemoteException {
         BookDataService bookDataService = DataBaseFactoryImpl.getInstance().getBookDataService();
         bookDataService.insert(book);
+    }
+
+    public static void main(String[] args) throws RemoteException {
+        Number number = new Number();
+        List<String> authors = new ArrayList<String>();
+        authors.add("丁二玉");
+        authors.add("刘钦");
+        BookPO book = new BookPO("软件工程与计算(卷二)", authors, "机械工业出版社",
+                                "9787111407508", BookType.ORDINARY);
+
+        number.numberBook(book, Category.T);
+
+        System.out.println("done");
     }
 }

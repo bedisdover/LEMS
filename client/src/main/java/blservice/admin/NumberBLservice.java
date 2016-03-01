@@ -23,5 +23,5 @@ public interface NumberBLservice {
      * @return 迭代器, 指向包含条形码及书标的键值对
      * @throws RemoteException
      */
-    public Iterator<Map.Entry<String, String>> numberBook(BookPO book, Category category) throws RemoteException;
+    public Map<String, String> numberBook(BookPO book, Category category) throws RemoteException;
 }

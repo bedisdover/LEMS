@@ -38,16 +38,14 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
         String sql = "insert into user values(?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement pstmt = databaseConnect.execute(sql);
+            String[] values = new String[]{
+                    user.getID(), user.getName(),
+                    user.getRole().toString(), user.getPassword(),
+                    TransferList.transfer(user.getBorrowList()),
+                    TransferList.transfer(user.getRenewList())
+            };
 
-            pstmt.setString(1, user.getID());
-            pstmt.setString(2, user.getName());
-            pstmt.setString(3, user.getRole().toString());
-            pstmt.setString(4, user.getPassword());
-            pstmt.setString(5, TransferList.transfer(user.getBorrowList()));
-            pstmt.setString(6, TransferList.transfer(user.getRenewList()));
-
-            pstmt.executeUpdate();
+            databaseConnect.execute(sql, values);
         } catch (SQLException e) {
             databaseConnect.closeConnection();
             return ResultMessage.FAILURE;
@@ -65,11 +63,9 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
      * @throws RemoteException 远程连接异常
      */
     public ResultMessage delete(String ID) throws RemoteException {
-        String sql = "delete from user where id = " + ID;
+        String sql = "delete from user where id = ?";
         try {
-            PreparedStatement pstmt = databaseConnect.execute(sql);
-
-            pstmt.executeUpdate();
+            databaseConnect.execute(sql, ID);
         } catch (SQLException e) {
             databaseConnect.closeConnection();
             return ResultMessage.FAILURE;
@@ -135,26 +131,23 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
      * @throws RemoteException 远程连接异常
      */
     public UserPO find(String ID) throws RemoteException {
-        String sql = "select * from user where id = " + ID;
+        String sql = "select * from user where id = ?";
         UserPO user = null;
 
         try {
-            ResultSet result = databaseConnect.getResultSet(sql);
+            ResultSet result = databaseConnect.getResultSet(sql, ID);
             result.next();
 
-            String id = result.getString(1);
             String name = result.getString(2);
             UserRole role = UserRole.valueOf(result.getString(3));
             String password = result.getString(4);
             String borrowList = result.getString(5);
             String renewList = result.getString(6);
 
-            user = new UserPO(name, id, role);
-
+            user = new UserPO(name, ID, role);
             user.setPassword(password);
             user.setBorrowList(borrowList);
             user.setRenewList(renewList);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -177,7 +170,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
         //添加新的记录
         list = barCode + " " + list;
         //更新记录
-        return update(list, userID, list);
+        return update(field, userID, list);
     }
 
     /**
@@ -193,9 +186,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
 
         int start = list.indexOf(barCode);
         int end = start;
-
-        while (list.charAt(end++) != ' ') ;
-
+        while (list.charAt(end++) != ' ');
         list.delete(start, end);
 
         return update(field, userID, list.toString());
@@ -213,12 +204,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
         String sql = "update user set " + field + " = ? where id = ?";
 
         try {
-            PreparedStatement pstmt = databaseConnect.execute(sql);
-
-            pstmt.setString(1, content);
-            pstmt.setString(2, userID);
-
-            pstmt.executeUpdate();
+            databaseConnect.execute(sql, content, userID);
         } catch (SQLException e) {
             e.printStackTrace();
             databaseConnect.closeConnection();
@@ -240,11 +226,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
         String data = "";
         String sql = "select " + field + " from user where id = ?";
         try {
-            PreparedStatement pstmt = databaseConnect.execute(sql);
-
-            pstmt.setString(1, userID);
-
-            ResultSet result = pstmt.executeQuery();
+            ResultSet result = databaseConnect.getResultSet(sql, userID);
             result.next();
             data = result.getString(1);
         } catch (SQLException e) {
@@ -253,5 +235,19 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
 
         databaseConnect.closeConnection();
         return data;
+    }
+
+    public static void main(String[] args) throws RemoteException {
+        UserData data = new UserData();
+        UserPO user = new UserPO("李四", "mf14129110", UserRole.GRADUATE);
+//        data.insert(user);
+//        data.delete("mf14129110");
+//        System.out.println(data.find("mf14129110"));
+//        data.borrow(user.getID(), "2016012300003");
+//        data.back(user.getID(), "2016012300003");
+//        data.renew(user.getID(), "2016012300003");
+        data.cancelRenew(user.getID(), "2016012300003");
+        System.out.println("done");
+        System.exit(0);
     }
 }

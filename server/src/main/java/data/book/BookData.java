@@ -8,10 +8,10 @@ import utility.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -116,10 +116,10 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
      * 故查询结果返回所有副本信息
      *
      * @param ISBN 图书ISBN编号
-     * @return 图书所有副本持久化对象列表, 若查询失败, 返回null
+     * @return 图书所有副本持久化对象列表的迭代器, 若查询失败, 返回null
      * @throws RemoteException 远程连接异常
      */
-    public List<BookPO> find(String ISBN) throws RemoteException {
+    public Iterator<BookPO> find(String ISBN) throws RemoteException {
         String sql = "select * from book where ISBN = ?";
         List<BookPO> list = new ArrayList<BookPO>();
 
@@ -147,7 +147,7 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
         }
         databaseConnect.closeConnection();
 
-        return list;
+        return list.iterator();
     }
 
     /**
@@ -158,7 +158,7 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
      * @throws RemoteException 远程连接异常
      */
     public List<BookPO> find(String... key) throws RemoteException {
-        //TODO 对条件搜索
+        //TODO 多条件搜索,暂时不予考虑
         return null;
     }
 
@@ -172,7 +172,7 @@ public class BookData extends UnicastRemoteObject implements BookDataService {
      */
     private ResultMessage update(String sql, String item, String value) {
         try {
-            //更新语句均为 "update book set renewer = ?(<value>) where barcode = ?(<item>)"
+            //更新语句均为 "update book set ... = ?(<value>) where ... = ?(<item>)"
             //故传入参数顺序为value, item
             databaseConnect.execute(sql, value, item);
         } catch (SQLException e) {

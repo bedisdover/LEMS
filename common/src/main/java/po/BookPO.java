@@ -72,6 +72,11 @@ public final class BookPO implements Serializable {
     private String renewer;
 
     public BookPO(String name, List<String> authors, String publisher,
+                  String ISBN, BookType type) {
+        this(name, authors, publisher, ISBN, type, null);
+    }
+
+    public BookPO(String name, List<String> authors, String publisher,
                   String ISBN, BookType type, String label) {
         this(name, publisher, ISBN, type, label);
         //初始化图书作者
