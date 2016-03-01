@@ -4,9 +4,7 @@ import po.BookPO;
 import po.Category;
 
 import java.rmi.RemoteException;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.StringTokenizer;
 
 /**
  * Created by 宋益明 on 16-1-22.
@@ -23,5 +21,5 @@ public interface NumberBLservice {
      * @return 迭代器, 指向包含条形码及书标的键值对
      * @throws RemoteException
      */
-    public Map<String, String> numberBook(BookPO book, Category category) throws RemoteException;
+    Map<String, String> numberBook(BookPO book, Category category) throws RemoteException;
 }

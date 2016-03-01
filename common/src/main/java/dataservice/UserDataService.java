@@ -21,7 +21,7 @@ public interface UserDataService extends Remote {
      * @return 成功返回SUCCESS, 失败返回FAILURE
      * @throws RemoteException 远程连接异常
      */
-    public ResultMessage insert(UserPO user) throws RemoteException;
+    ResultMessage insert(UserPO user) throws RemoteException;
 
     /**
      * 删除用户
@@ -30,7 +30,7 @@ public interface UserDataService extends Remote {
      * @return 成功返回SUCCESS, 失败返回FAILURE
      * @throws RemoteException 远程连接异常
      */
-    public ResultMessage delete(String ID) throws RemoteException;
+    ResultMessage delete(String ID) throws RemoteException;
 
     /**
      * 借阅图书
@@ -40,7 +40,7 @@ public interface UserDataService extends Remote {
      * @return 成功返回SUCCESS, 失败返回FAILURE
      * @throws RemoteException 远程连接异常
      */
-    public ResultMessage borrow(String userID, String barCode) throws RemoteException;
+    ResultMessage borrow(String userID, String barCode) throws RemoteException;
 
     /**
      * 预约图书
@@ -50,7 +50,7 @@ public interface UserDataService extends Remote {
      * @return 成功返回SUCCESS, 失败返回FAILURE
      * @throws RemoteException 远程连接异常
      */
-    public ResultMessage renew(String userID, String barCode) throws RemoteException;
+    ResultMessage renew(String userID, String barCode) throws RemoteException;
 
     /**
      * 归还图书
@@ -60,7 +60,7 @@ public interface UserDataService extends Remote {
      * @return 成功返回SUCCESS, 失败返回FAILURE
      * @throws RemoteException 远程连接异常
      */
-    public ResultMessage back(String userID, String barCode) throws RemoteException;
+    ResultMessage back(String userID, String barCode) throws RemoteException;
 
 
     /**
@@ -71,7 +71,7 @@ public interface UserDataService extends Remote {
      * @return 成功返回SUCCESS, 失败返回FAILURE
      * @throws RemoteException 远程连接异常
      */
-    public ResultMessage cancelRenew(String userID, String barCode) throws RemoteException;
+    ResultMessage cancelRenew(String userID, String barCode) throws RemoteException;
 
     /**
      * 查询用户信息
@@ -80,7 +80,7 @@ public interface UserDataService extends Remote {
      * @return 用户持久化对象
      * @throws RemoteException 远程连接异常
      */
-    public UserPO find(String ID) throws RemoteException;
+    UserPO find(String ID) throws RemoteException;
 
     /**
      * 重置用户密码
@@ -89,5 +89,5 @@ public interface UserDataService extends Remote {
      * @return 新密码
      * @throws RemoteException 远程连接异常
      */
-    public String resetPass(String userID) throws RemoteException;
+    String resetPass(String userID) throws RemoteException;
 }

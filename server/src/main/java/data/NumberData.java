@@ -1,11 +1,9 @@
 package data;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 import dataservice.NumberDataService;
 import po.Category;
 import utility.Format;
 
-import java.io.Serializable;
 import java.math.BigInteger;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -24,8 +22,6 @@ public class NumberData extends UnicastRemoteObject implements NumberDataService
     private DatabaseConnect databaseConnect;
 
     public NumberData() throws RemoteException {
-        super();
-
         databaseConnect = new DatabaseConnect();
     }
 
@@ -71,7 +67,7 @@ public class NumberData extends UnicastRemoteObject implements NumberDataService
      * @return 书标
      */
     public String createLabel(Category category) {
-        String sql = "select label from book where label like ?" ;
+        String sql = "select label from book where label like ?";
 
         List<String> list = new ArrayList<String>();
         try {

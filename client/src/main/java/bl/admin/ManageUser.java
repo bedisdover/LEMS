@@ -1,17 +1,10 @@
 package bl.admin;
 
-import bl.DataBaseFactoryImpl;
+import bl.Connect;
 import blservice.admin.ManageUserBLservice;
-import dataservice.DataBaseFactory;
-import dataservice.UserDataService;
 import po.UserPO;
-import po.UserRole;
-import utility.ConnectConfig;
 import utility.ResultMessage;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 /**
@@ -30,7 +23,7 @@ public class ManageUser implements ManageUserBLservice {
      * @throws RemoteException 远程连接异常
      */
     public ResultMessage create(UserPO user) throws RemoteException {
-        return DataBaseFactoryImpl.getInstance().getUserDataService().insert(user);
+        return Connect.getInstance().getUserDataService().insert(user);
     }
 
     /**
@@ -41,7 +34,7 @@ public class ManageUser implements ManageUserBLservice {
      * @throws RemoteException 远程连接异常
      */
     public ResultMessage delete(String userID) throws RemoteException {
-        return getDataService().delete(userID);
+        return Connect.getInstance().getUserDataService().delete(userID);
     }
 
     /**
@@ -52,32 +45,6 @@ public class ManageUser implements ManageUserBLservice {
      * @throws RemoteException 远程连接异常
      */
     public String resetPass(String userID) throws RemoteException {
-        return getDataService().resetPass(userID);
-    }
-
-    private UserDataService getDataService() throws RemoteException {
-
-        UserDataService userDataService = null;
-
-        try {
-            //获得数据库的引用
-            DataBaseFactory databaseFactory = (DataBaseFactory) Naming.lookup(ConnectConfig.URL);
-
-            userDataService = databaseFactory.getUserDataService();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (RemoteException e) {
-            throw e;
-        } catch (NotBoundException e) {
-            e.printStackTrace();
-        }
-
-        return userDataService;
-    }
-
-    public static void main(String[] args) throws RemoteException {
-        UserPO user = new UserPO("王五", "314110", UserRole.TEACHER);
-//        System.out.println(new ManageUser().create(user));
-        System.out.println(new ManageUser().delete("mf14129110"));
+        return Connect.getInstance().getUserDataService().resetPass(userID);
     }
 }

@@ -14,25 +14,28 @@ import java.rmi.server.UnicastRemoteObject;
 
 /**
  * Created by 宋益明 on 16-2-25.
+ * <p>
+ * 服务器连接类
+ * 实现客户端连接服务器
  */
-public final class DataBaseFactoryImpl extends UnicastRemoteObject implements DataBaseFactory {
+public final class Connect extends UnicastRemoteObject implements DataBaseFactory {
 
-    private static DataBaseFactoryImpl instance;
+    private static Connect instance;
     private DataBaseFactory dataBaseFactory;
 
     static {
         try {
-            instance = new DataBaseFactoryImpl();
+            instance = new Connect();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
 
-    private DataBaseFactoryImpl() throws RemoteException {
+    private Connect() throws RemoteException {
         super();
     }
 
-    public static DataBaseFactoryImpl getInstance() {
+    public static Connect getInstance() {
         return instance;
     }
 
@@ -69,6 +72,9 @@ public final class DataBaseFactoryImpl extends UnicastRemoteObject implements Da
         return dataBaseFactory.getNumberDataService();
     }
 
+    /**
+     * 连接服务器
+     */
     private void connect() {
         try {
             dataBaseFactory = (DataBaseFactory) Naming.lookup(ConnectConfig.URL);

@@ -1,6 +1,6 @@
 package bl.admin;
 
-import bl.DataBaseFactoryImpl;
+import bl.Connect;
 import blservice.admin.NumberBLservice;
 import dataservice.BookDataService;
 import dataservice.NumberDataService;
@@ -41,8 +41,8 @@ public class Number implements NumberBLservice {
      * @return 条形码
      */
     private String createBarCode() throws RemoteException {
-        NumberDataService numberDataService = DataBaseFactoryImpl.getInstance().getNumberDataService();
-        return numberDataService.createBarCode(new Date());
+        NumberDataService numberDataService = Connect.getInstance().getNumberDataService();
+        return numberDataService.createBarCode();
     }
 
     /**
@@ -52,7 +52,7 @@ public class Number implements NumberBLservice {
      * @return 书标
      */
     private String createLabel(Category category) throws RemoteException {
-        NumberDataService numberDataService = DataBaseFactoryImpl.getInstance().getNumberDataService();
+        NumberDataService numberDataService = Connect.getInstance().getNumberDataService();
         return numberDataService.createLabel(category);
     }
 
@@ -62,7 +62,7 @@ public class Number implements NumberBLservice {
      * @param book 图书持久化对象
      */
     private void storeBookInfo(BookPO book) throws RemoteException {
-        BookDataService bookDataService = DataBaseFactoryImpl.getInstance().getBookDataService();
+        BookDataService bookDataService = Connect.getInstance().getBookDataService();
         bookDataService.insert(book);
     }
 

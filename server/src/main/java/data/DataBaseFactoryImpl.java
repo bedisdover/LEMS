@@ -13,7 +13,7 @@ import java.rmi.server.UnicastRemoteObject;
 /**
  * Created by 宋益明 on 16-1-23.
  *
- *
+ * 数据工厂实现类
  */
 public class DataBaseFactoryImpl extends UnicastRemoteObject implements DataBaseFactory {
 
@@ -33,6 +33,7 @@ public class DataBaseFactoryImpl extends UnicastRemoteObject implements DataBase
 
     /**
      * 获得用户数据接口
+     *
      * @return
      * @throws RemoteException 远程连接异常
      */
