@@ -17,7 +17,7 @@ public interface DataBaseFactory extends Remote {
      * @return
      * @throws RemoteException 远程连接异常
      */
-    public BookDataService getBookDataService() throws RemoteException;
+    BookDataService getBookDataService() throws RemoteException;
 
     /**
      * 获得用户数据接口
@@ -25,7 +25,7 @@ public interface DataBaseFactory extends Remote {
      * @return
      * @throws RemoteException 远程连接异常
      */
-    public UserDataService getUserDataService() throws RemoteException;
+    UserDataService getUserDataService() throws RemoteException;
 
     /**
      * 获得图书编号数据服务
@@ -33,5 +33,5 @@ public interface DataBaseFactory extends Remote {
      * @return
      * @throws RemoteException 远程连接异常
      */
-    public NumberDataService getNumberDataService() throws RemoteException;
+    NumberDataService getNumberDataService() throws RemoteException;
 }

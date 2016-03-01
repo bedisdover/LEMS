@@ -35,7 +35,7 @@ public interface UserDataService extends Remote {
     /**
      * 借阅图书
      *
-     * @param userID 用户ID
+     * @param userID  用户ID
      * @param barCode 图书条形码
      * @return 成功返回SUCCESS, 失败返回FAILURE
      * @throws RemoteException 远程连接异常
@@ -45,7 +45,7 @@ public interface UserDataService extends Remote {
     /**
      * 预约图书
      *
-     * @param userID 用户ID
+     * @param userID  用户ID
      * @param barCode 图书条形码
      * @return 成功返回SUCCESS, 失败返回FAILURE
      * @throws RemoteException 远程连接异常
@@ -55,7 +55,7 @@ public interface UserDataService extends Remote {
     /**
      * 归还图书
      *
-     * @param userID 用户ID
+     * @param userID  用户ID
      * @param barCode 图书条形码
      * @return 成功返回SUCCESS, 失败返回FAILURE
      * @throws RemoteException 远程连接异常
@@ -66,7 +66,7 @@ public interface UserDataService extends Remote {
     /**
      * 取消预约图书
      *
-     * @param userID 用户ID
+     * @param userID  用户ID
      * @param barCode 图书条形码
      * @return 成功返回SUCCESS, 失败返回FAILURE
      * @throws RemoteException 远程连接异常
@@ -81,4 +81,13 @@ public interface UserDataService extends Remote {
      * @throws RemoteException 远程连接异常
      */
     public UserPO find(String ID) throws RemoteException;
+
+    /**
+     * 重置用户密码
+     *
+     * @param userID 用户ID
+     * @return 新密码
+     * @throws RemoteException 远程连接异常
+     */
+    public String resetPass(String userID) throws RemoteException;
 }

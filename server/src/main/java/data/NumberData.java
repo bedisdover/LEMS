@@ -5,8 +5,10 @@ import dataservice.NumberDataService;
 import po.Category;
 import utility.Format;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -17,11 +19,13 @@ import java.util.List;
 /**
  * Created by 宋益明 on 16-2-28.
  */
-public class NumberData implements NumberDataService {
+public class NumberData extends UnicastRemoteObject implements NumberDataService {
 
     private DatabaseConnect databaseConnect;
 
-    public NumberData() {
+    public NumberData() throws RemoteException {
+        super();
+
         databaseConnect = new DatabaseConnect();
     }
 
@@ -115,7 +119,7 @@ public class NumberData implements NumberDataService {
         return temp.toString();
     }
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, RemoteException {
         NumberData data = new NumberData();
 
         System.out.println(data.createBarCode(Format.DATE_FORMAT.parse("20160123")));

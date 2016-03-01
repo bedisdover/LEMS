@@ -10,15 +10,26 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 /**
  * Created by 宋益明 on 16-2-25.
  */
-public final class DataBaseFactoryImpl implements DataBaseFactory {
+public final class DataBaseFactoryImpl extends UnicastRemoteObject implements DataBaseFactory {
 
-    private static DataBaseFactoryImpl instance = new DataBaseFactoryImpl();
+    private static DataBaseFactoryImpl instance;
+    private DataBaseFactory dataBaseFactory;
 
-    private DataBaseFactoryImpl() {
+    static {
+        try {
+            instance = new DataBaseFactoryImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private DataBaseFactoryImpl() throws RemoteException {
+        super();
     }
 
     public static DataBaseFactoryImpl getInstance() {
@@ -32,20 +43,8 @@ public final class DataBaseFactoryImpl implements DataBaseFactory {
      * @throws RemoteException
      */
     public BookDataService getBookDataService() throws RemoteException {
-        BookDataService dataService = null;
-
-        try {
-            DataBaseFactory dataBaseFactory = (DataBaseFactory) Naming.lookup(ConnectConfig.IP);
-            dataService = dataBaseFactory.getBookDataService();
-        } catch (NotBoundException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (RemoteException e) {
-            throw e;
-        }
-
-        return dataService;
+        connect();
+        return dataBaseFactory.getBookDataService();
     }
 
     /**
@@ -55,20 +54,8 @@ public final class DataBaseFactoryImpl implements DataBaseFactory {
      * @throws RemoteException 远程连接异常
      */
     public UserDataService getUserDataService() throws RemoteException {
-        UserDataService dataService = null;
-
-        try {
-            DataBaseFactory dataBaseFactory = (DataBaseFactory) Naming.lookup(ConnectConfig.IP);
-            dataService = dataBaseFactory.getUserDataService();
-        } catch (NotBoundException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (RemoteException e) {
-            throw e;
-        }
-
-        return dataService;
+        connect();
+        return dataBaseFactory.getUserDataService();
     }
 
     /**
@@ -78,19 +65,19 @@ public final class DataBaseFactoryImpl implements DataBaseFactory {
      * @throws RemoteException 远程连接异常
      */
     public NumberDataService getNumberDataService() throws RemoteException {
-        NumberDataService dataService = null;
+        connect();
+        return dataBaseFactory.getNumberDataService();
+    }
 
+    private void connect() {
         try {
-            DataBaseFactory dataBaseFactory = (DataBaseFactory) Naming.lookup(ConnectConfig.IP);
-            dataService = dataBaseFactory.getNumberDataService();
+            dataBaseFactory = (DataBaseFactory) Naming.lookup(ConnectConfig.URL);
         } catch (NotBoundException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (RemoteException e) {
-            throw e;
+            e.printStackTrace();
         }
-
-        return dataService;
     }
 }

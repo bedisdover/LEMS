@@ -1,11 +1,13 @@
 package po;
 
+import java.io.Serializable;
+
 /**
  * Created by 宋益明 on 16-2-28.
  * <p>
  * 图书类别, 根据中图法分类标准, 将图书分为22个基本大类
  */
-public enum Category {
+public enum Category implements Serializable {
     A, //马克思主义、列宁主义、毛泽东思想、邓小平理论
     B, //哲学、宗教
     C, //社会科学总论

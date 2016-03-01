@@ -8,7 +8,6 @@ import utility.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -20,6 +19,8 @@ import java.sql.SQLException;
  * 负责对用户信息的增删改查
  */
 public class UserData extends UnicastRemoteObject implements UserDataService {
+
+    private static final String DEFAULT_PASS = "123456";
 
     private DatabaseConnect databaseConnect;
 
@@ -157,6 +158,18 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
     }
 
     /**
+     * 重置用户密码
+     *
+     * @param userID 用户ID
+     * @return 新密码
+     * @throws RemoteException 远程连接异常
+     */
+    public String resetPass(String userID) throws RemoteException {
+        update("password", userID, DEFAULT_PASS);
+        return DEFAULT_PASS;
+    }
+
+    /**
      * 向借阅列表或预约列表中添加图书
      *
      * @param field   表项
@@ -186,7 +199,7 @@ public class UserData extends UnicastRemoteObject implements UserDataService {
 
         int start = list.indexOf(barCode);
         int end = start;
-        while (list.charAt(end++) != ' ');
+        while (list.charAt(end++) != ' ') ;
         list.delete(start, end);
 
         return update(field, userID, list.toString());

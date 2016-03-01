@@ -2,6 +2,7 @@ package dataservice;
 
 import po.Category;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.Date;
@@ -14,7 +15,7 @@ import java.util.Date;
  * 条形码在当天入库图书编号基础上增加
  * 书标在同类型图书编号基础上增加
  */
-public interface NumberDataService {
+public interface NumberDataService extends Remote {
 
     /**
      * 生成条形码, 默认当前日期
