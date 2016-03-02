@@ -26,6 +26,9 @@ public class Number implements NumberBLservice {
         book.setBarCode(barCode);
         book.setLabel(label);
 
+        System.out.println(barCode);
+        System.out.println(label);
+
         storeBookInfo(book);
 
         Map<String, String> result = new HashMap<String, String>(2);

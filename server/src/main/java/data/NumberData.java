@@ -57,6 +57,10 @@ public class NumberData extends UnicastRemoteObject implements NumberDataService
         }
         databaseConnect.closeConnection();
 
+        if (list.isEmpty()) {
+            return prefix + "00001";
+        }
+
         return increase(getLast(list));
     }
 

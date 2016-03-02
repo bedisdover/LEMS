@@ -38,6 +38,7 @@ public interface NumberDataService extends Remote {
      *
      * @param category 图书分类
      * @return 书标
+     * @throws RemoteException 远程连接异常
      */
-    String createLabel(Category category);
+    String createLabel(Category category) throws RemoteException;
 }
