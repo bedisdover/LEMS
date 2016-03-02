@@ -16,6 +16,11 @@ import java.util.List;
 
 /**
  * Created by 宋益明 on 16-2-28.
+ * <p>
+ * 图书编号数据服务
+ * 负责生成图书编号
+ * 条形码在当天入库图书编号基础上增加
+ * 书标在同类型图书编号基础上增加
  */
 public class NumberData extends UnicastRemoteObject implements NumberDataService {
 
@@ -67,25 +72,19 @@ public class NumberData extends UnicastRemoteObject implements NumberDataService
     /**
      * 生成书标
      *
+     * @param ISBN     ISBN编号
      * @param category 图书分类
      * @return 书标
      */
-    public String createLabel(Category category) {
-        String sql = "select label from book where label like ?";
-
-        List<String> list = new ArrayList<String>();
+    public String createLabel(String ISBN, Category category) {
+        String label = null;
         try {
-            ResultSet result = databaseConnect.getResultSet(sql, category.toString());
-
-            while (result.next()) {
-                list.add(result.getString(1));
-            }
+            label = LabelCreater.createLabel(ISBN, category);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        databaseConnect.closeConnection();
-        //TODO 如何编号???????
-        return getLast(list);
+
+        return label;
     }
 
     /**

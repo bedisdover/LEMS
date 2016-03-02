@@ -36,9 +36,10 @@ public interface NumberDataService extends Remote {
     /**
      * 生成书标
      *
+     * @param ISBN     ISBN编号
      * @param category 图书分类
      * @return 书标
      * @throws RemoteException 远程连接异常
      */
-    String createLabel(Category category) throws RemoteException;
+    String createLabel(String ISBN, Category category) throws RemoteException;
 }
